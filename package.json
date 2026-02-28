@@ -1,0 +1,24 @@
+{
+  "name": "notes_api",
+  "version": "1.0.0",
+  "description": "To understand APIs better!\r <br>It will use differnet API methods like GET, POST, DELETE and PUT, basically performing CRUD operations for notes using APIs.",
+  "main": "notes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asmita-patil-ohf/notes_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/asmita-patil-ohf/notes_api/issues"
+  },
+  "homepage": "https://github.com/asmita-patil-ohf/notes_api#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
