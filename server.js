@@ -24,6 +24,18 @@ app.get("/notes/:id", (req, res) => {
         return res.status(404).json({ message: "Note not found" });
     }
 });
+
+app.post("/notes",(req,res) => {
+    const newNote=req.body;
+
+    const data = fs.readFileSync("notes.json");
+    const notes = JSON.parse(data);
+    newNote.id=Date.now();
+    notes.push(newNote);
+    fs.writeFileSync("notes.json", JSON.stringify(notes,null,2));
+    res.status(201).json({message: "Note added successfully!"});
+})
+
 app.listen(3000, () => {
     console.log("Server running on port 3000");
 });
