@@ -55,6 +55,34 @@ app.delete("/notes/:id",(req,res)=>{
 
 });
 
+app.put("/notes/:id", (req, res) => {
+    const noteId = parseInt(req.params.id);
+    const updatedData = req.body;
+
+    const data = fs.readFileSync(__dirname + "/notes.json");
+    const notes = JSON.parse(data);
+
+    const noteIndex = notes.findIndex(n => n.id === noteId);
+
+    if (noteIndex === -1) {
+        return res.status(404).json({ message: "Note not found" });
+    }
+
+    // Keep old ID
+    notes[noteIndex] = {
+        ...notes[noteIndex],
+        title: updatedData.title,
+        content: updatedData.content
+    };
+
+    fs.writeFileSync(
+        __dirname + "/notes.json",
+        JSON.stringify(notes, null, 2)
+    );
+
+    res.json(notes[noteIndex]);
+});
+
 app.listen(3000, () => {
     console.log("Server running on port 3000");
 });
