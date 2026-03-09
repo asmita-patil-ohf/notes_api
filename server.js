@@ -59,7 +59,7 @@ app.put("/notes/:id", (req, res) => {
     const noteId = parseInt(req.params.id);
     const updatedData = req.body;
 
-    const data = fs.readFileSync(__dirname + "/notes.json");
+    const data = fs.readFileSync("notes.json");
     const notes = JSON.parse(data);
 
     const noteIndex = notes.findIndex(n => n.id === noteId);
@@ -76,7 +76,7 @@ app.put("/notes/:id", (req, res) => {
     };
 
     fs.writeFileSync(
-        __dirname + "/notes.json",
+        "notes.json",
         JSON.stringify(notes, null, 2)
     );
 
